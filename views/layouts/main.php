@@ -51,7 +51,8 @@ AppAsset::register($this);
                 )
                 . Html::endForm()
                 . '</li>'
-            )
+            ),
+            ['label' => 'dvdrental', 'url' => ['/dvdrental/default']],
         ],
     ]);
     NavBar::end();

@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$router = require __DIR__ . '/router.php';
 
 $config = [
     'id' => 'basic',
@@ -10,6 +11,12 @@ $config = [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@dvdrental' => '@app/modules/dvdrental'
+    ],
+    'modules' => [
+        'dvdrental' => [
+            'class' => 'app\modules\dvdrental\Module',
+        ],
     ],
     'components' => [
         'request' => [
@@ -46,9 +53,12 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
-            ],
+            'rules' => $router,
         ],
+        //не дублировать ресурсы в web/assets, а делать символические ссылки
+        'assetManager' => [
+            'linkAssets' => true,
+        ]
     ],
     'params' => $params,
 ];
