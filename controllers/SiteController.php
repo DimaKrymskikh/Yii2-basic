@@ -7,25 +7,36 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 
+use app\models\LoginForm;
+use app\models\RegistrationForm;
+
+/**
+ * Реализует аутентификацию
+ */
 class SiteController extends Controller
 {
     /**
-     * {@inheritdoc}
+     * Фильтры контроля доступа
+     * @return array
      */
-    public function behaviors()
+    public function behaviors(): array
     {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
                 'rules' => [
                     [
+                        // Выход может выполнить только аутентифицированный пользователь
                         'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        // Регистрацию и вход может выполнить только неаутентифицированный пользователь
+                        'actions' => ['registration', 'login'],
+                        'allow' => true,
+                        'roles' => ['?'],
                     ],
                 ],
             ],
@@ -39,37 +50,10 @@ class SiteController extends Controller
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function actions()
-    {
-        return [
-            'error' => [
-                'class' => 'yii\web\ErrorAction',
-            ],
-            'captcha' => [
-                'class' => 'yii\captcha\CaptchaAction',
-                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
-            ],
-        ];
-    }
-
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionIndex()
-    {
-        return $this->render('index');
-    }
-
-    /**
-     * Login action.
-     *
+     * Вход пользователя
      * @return Response|string
      */
-    public function actionLogin()
+    public function actionLogin(): Response|string
     {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
@@ -85,44 +69,33 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-
+    
     /**
-     * Logout action.
-     *
-     * @return Response
-     */
-    public function actionLogout()
-    {
-        Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
-
-    /**
-     * Displays contact page.
-     *
+     * Регистрация пользователя
      * @return Response|string
      */
-    public function actionContact()
+    public function actionRegistration(): Response|string
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
+        $model = new RegistrationForm();
+        if ($model->load(Yii::$app->request->post()) && $model->registration()) {
+            return $this->goBack();
         }
-        return $this->render('contact', [
+        
+        $model->password = '';
+        $model->verification = '';
+        return $this->render('registration', [
             'model' => $model,
         ]);
     }
 
     /**
-     * Displays about page.
-     *
-     * @return string
+     * Выход пользователя
+     * @return Response
      */
-    public function actionAbout()
+    public function actionLogout(): Response
     {
-        return $this->render('about');
+        Yii::$app->user->logout();
+
+        return $this->goHome();
     }
 }

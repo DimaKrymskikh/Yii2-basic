@@ -82,3 +82,12 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+/* Изменён фон хлебных крошек */
+.breadcrumb {
+    background-color: initial;
+}
+/* Изменён фон навигации */
+.do-dark {
+    background-color: darkorange;
+}

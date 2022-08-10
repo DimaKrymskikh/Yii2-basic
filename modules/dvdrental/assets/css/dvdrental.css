@@ -1,4 +1,36 @@
+/* Стили пагинации */
+.pagination-gridview a, 
+.pagination-gridview span,
+.pagination-gridview-prev a, 
+.pagination-gridview-prev span,
+.pagination-gridview-next a, 
+.pagination-gridview-next span
+{
+    padding: 2px 5px;
+    border: solid gray 1px;
+    margin: 0 1px;
+}
 
-main > .container {
-    padding: 70px 15px 20px;
+.pagination-gridview-prev a, 
+.pagination-gridview-prev span
+{
+    border-radius: 10px 0 0 10px;
+}
+
+.pagination-gridview-next a, 
+.pagination-gridview-next span
+{
+    border-radius: 0 10px 10px 0;
+}
+
+.pagination-gridview-active span {
+    background-color: red;
+}
+
+.pagination-gridview a:hover, 
+.pagination-gridview-prev a:hover, 
+.pagination-gridview-next a:hover
+{
+    background-color: orange;
+    text-decoration: none;
 }

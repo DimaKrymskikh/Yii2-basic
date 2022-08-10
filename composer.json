@@ -17,7 +17,8 @@
         "php": ">=5.6.0",
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap4": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0"
+        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
+        "timurmelnikov/yii2-loading-overlay": "~1.0.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -35,6 +36,9 @@
         "process-timeout": 1800,
         "fxp-asset": {
             "enabled": false
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": false
         }
     },
     "scripts": {
@@ -44,7 +48,8 @@
         "post-create-project-cmd": [
             "yii\\composer\\Installer::postCreateProject",
             "yii\\composer\\Installer::postInstall"
-        ]
+        ],
+        "test": "vendor/bin/codecept run"
     },
     "extra": {
         "yii\\composer\\Installer::postCreateProject": {

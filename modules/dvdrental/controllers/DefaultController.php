@@ -2,34 +2,29 @@
 
 namespace app\modules\dvdrental\controllers;
 
-use app\models\Country;
-use app\models\CountrySearch;
-use app\models\City;
-
 use Yii;
-use yii\data\ActiveDataProvider;
+use yii\base\Controller;
 
-class DefaultController extends \yii\base\Controller
+use app\models\activeRecord\Film;
+use app\modules\dvdrental\models\FilmSearch;
+
+/**
+ * Каталог
+ */
+class DefaultController extends Controller
 {
-    public function actionIndex(): string
+    /**
+     * Отрисовка страницы каталога
+     * @return string
+     */
+    public function actionFilms(): string
     {
-        return $this->render('dvdrental', []);
-    }
-    
-    public function actionCountries(): string
-    {
-        $searchModel = new CountrySearch();
+        $searchModel = new FilmSearch();
+        $query = Film::find()->with(['language', 'infoUser'])->orderBy('title');
         
-        return $this->render('countries', [
-                'searchModel' => $searchModel,
-                'dataProvider' => $searchModel->search(Yii::$app->request->get())
-            ]);
-    }
-    
-    public function actionCities(): string
-    {
-        return $this->render('cities', [
-            'cities' => City::findAll(['country_id' => Yii::$app->request->get('countryId')])
+        return $this->render('films', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $searchModel->search(Yii::$app->request->get(), $query),
         ]);
     }
 }

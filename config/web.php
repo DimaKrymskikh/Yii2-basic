@@ -15,9 +15,11 @@ $config = [
     ],
     'modules' => [
         'dvdrental' => [
-            'class' => 'app\modules\dvdrental\Module',
+            'class' => 'app\modules\dvdrental\DvdrentalModule',
         ],
     ],
+    // Маршрут, который используется, когда url = '/'
+    'defaultRoute' => 'default',
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -27,11 +29,12 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\activeRecord\User',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            // Место страницы ошибок
+            'errorAction' => 'default/error',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
@@ -51,8 +54,11 @@ $config = [
         ],
         'db' => $db,
         'urlManager' => [
+            // Задаём человекопонятные URL
             'enablePrettyUrl' => true,
+            // Отключаем имя входного скрипта
             'showScriptName' => false,
+            // Задаём набор правил для разбора и создания URL (на данный момент набор правил пуст)
             'rules' => $router,
         ],
         //не дублировать ресурсы в web/assets, а делать символические ссылки
