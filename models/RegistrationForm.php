@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 
-use app\models\activeRecord\User;
+use app\models\User;
 
 /**
  * Модель формы регистрации пользователя
