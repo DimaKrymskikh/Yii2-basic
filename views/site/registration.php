@@ -11,13 +11,13 @@ $this->title = 'Регистрация';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="site-login">
+<div class="site-registration">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>Для регистрации заполните следующие поля:</p>
 
     <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
+        'id' => 'registration-form',
         'layout' => 'horizontal',
         'fieldConfig' => [
             'template' => "{label}\n{input}\n{error}",
