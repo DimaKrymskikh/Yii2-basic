@@ -1,7 +1,12 @@
 {
     "name": "yiisoft/yii2-app-basic",
     "description": "Yii 2 Basic Project Template",
-    "keywords": ["yii2", "framework", "basic", "project template"],
+    "keywords": [
+        "yii2",
+        "framework",
+        "basic",
+        "project template"
+    ],
     "homepage": "http://www.yiiframework.com/",
     "type": "project",
     "license": "BSD-3-Clause",
@@ -30,7 +35,9 @@
         "symfony/browser-kit": ">=2.7 <=4.2.4",
         "codeception/module-filesystem": "^1.0.0",
         "codeception/module-yii2": "^1.0.0",
-        "codeception/module-asserts": "^1.0.0"
+        "codeception/module-asserts": "^1.0.0",
+        "codeception/module-webdriver": "2.0",
+        "codeception/module-db": "2.0"
     },
     "config": {
         "process-timeout": 1800,
@@ -49,7 +56,8 @@
             "yii\\composer\\Installer::postCreateProject",
             "yii\\composer\\Installer::postInstall"
         ],
-        "test": "vendor/bin/codecept run"
+        "test": "vendor/bin/codecept run",
+        "serve": "./tests/bin/yii serve"
     },
     "extra": {
         "yii\\composer\\Installer::postCreateProject": {

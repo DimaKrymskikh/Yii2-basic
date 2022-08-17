@@ -28,6 +28,7 @@
             },
             success: function() {
                 $tag.removeClass('adding-film');
+                $tag.addClass('film-availability');
                 $tag.prop('src', '/svg/check-circle.svg');
                 $tag.LoadingOverlay("hide");
             }

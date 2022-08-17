@@ -1,0 +1,21 @@
+class_name: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver:
+            url: http://dima.yii2.basic-test:88/
+            browser: firefox
+        - Yii2:
+            part: orm
+            entryScript: index-test.php
+            cleanup: false
+# Это не работает
+# populator приводит к ошибкам при обновлении базы
+# Нужно найти способ обновлять тестовую базу, потому что приёмочные тесты вносят в неё изменения, из-за чего они корректно выполняются только один раз
+#        - Db:
+#            dsn: 'pgsql:host=localhost;port=5433;dbname=testdvdrental'
+#            user: 'postgres'
+#            password: '1234'
+#            dump: 'tests/_data/db_backup.dump'
+#            populate: true # run populator before all tests
+#            cleanup: true # run populator before each test
+#            populator: 'pg_restore -w -p $port -U $user -C -c -d postgres $dump'

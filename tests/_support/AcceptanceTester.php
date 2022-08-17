@@ -1,5 +1,6 @@
 <?php
 
+use yii\helpers\Url;
 
 /**
  * Inherited Methods
@@ -20,7 +21,16 @@ class AcceptanceTester extends \Codeception\Actor
 {
     use _generated\AcceptanceTesterActions;
 
-   /**
-    * Define custom actions here
-    */
+    public function login(string $login, string $password)
+    {
+//        if ($this->loadSessionSnapshot('LoginForm[login]')) {
+//            return;
+//        }
+        $this->amOnPage(Url::toRoute('/site/login'));
+        $this->submitForm('#login-form', [
+            'LoginForm[login]' => $login,
+            'LoginForm[password]' => $password,
+        ]);
+//        $this->saveSessionSnapshot('LoginForm[login]');
+    }
 }

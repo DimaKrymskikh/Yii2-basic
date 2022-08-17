@@ -1,6 +1,7 @@
 <?php
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/test_db.php';
+$modules = require __DIR__ . '/modules.php';
 
 /**
  * Application configuration shared by all test types
@@ -11,18 +12,25 @@ return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
+        '@dvdrental' => '@app/modules/dvdrental'
     ],
     'language' => 'en-US',
+    'modules' => $modules,
+    // Маршрут, который используется, когда url = '/'
+    'defaultRoute' => 'default',
     'components' => [
         'db' => $db,
         'mailer' => [
             'useFileTransport' => true,
         ],
         'assetManager' => [
-            'basePath' => __DIR__ . '/../web/assets',
+            'linkAssets' => true,
         ],
         'urlManager' => [
-            'showScriptName' => true,
+            // Задаём человекопонятные URL
+            'enablePrettyUrl' => true,
+            // Отключаем имя входного скрипта
+            'showScriptName' => false,
         ],
         'user' => [
             'identityClass' => 'app\models\User',

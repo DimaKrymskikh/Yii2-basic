@@ -1,0 +1,176 @@
+;
+; Archive created at 2022-08-16 16:19:03
+;     dbname: testdvdrental
+;     TOC Entries: 165
+;     Compression: -1
+;     Dump Version: 1.14-0
+;     Format: CUSTOM
+;     Integer: 4 bytes
+;     Offset: 8 bytes
+;     Dumped from database version: 13.2
+;     Dumped by pg_dump version: 13.2
+;
+;
+; Selected TOC Entries:
+;
+5; 2615 26006 SCHEMA - info postgres
+670; 1247 26008 TYPE public mpaa_rating postgres
+673; 1247 26020 DOMAIN public year postgres
+239; 1255 26022 FUNCTION public _group_concat(text, text) postgres
+240; 1255 26023 FUNCTION public film_in_stock(integer, integer) postgres
+241; 1255 26024 FUNCTION public film_not_in_stock(integer, integer) postgres
+242; 1255 26025 FUNCTION public get_customer_balance(integer, timestamp without time zone) postgres
+243; 1255 26026 FUNCTION public inventory_held_by_customer(integer) postgres
+244; 1255 26027 FUNCTION public inventory_in_stock(integer) postgres
+245; 1255 26028 FUNCTION public last_day(timestamp without time zone) postgres
+246; 1255 26029 FUNCTION public last_updated() postgres
+201; 1259 26030 SEQUENCE public customer_customer_id_seq postgres
+202; 1259 26032 TABLE public customer postgres
+258; 1255 26039 FUNCTION public rewards_report(integer, numeric) postgres
+767; 1255 26040 AGGREGATE public group_concat(text) postgres
+203; 1259 26041 TABLE info film_users postgres
+3285; 0 0 COMMENT info TABLE film_users postgres
+3286; 0 0 COMMENT info COLUMN film_users.user_id postgres
+3287; 0 0 COMMENT info COLUMN film_users.film_id postgres
+204; 1259 26044 TABLE info users postgres
+3288; 0 0 COMMENT info TABLE users postgres
+3289; 0 0 COMMENT info COLUMN users.login postgres
+3290; 0 0 COMMENT info COLUMN users.password postgres
+3291; 0 0 COMMENT info COLUMN users.auth_key postgres
+205; 1259 26050 SEQUENCE info users_id_seq postgres
+3292; 0 0 SEQUENCE OWNED BY info users_id_seq postgres
+206; 1259 26052 SEQUENCE public actor_actor_id_seq postgres
+207; 1259 26054 TABLE public actor postgres
+208; 1259 26059 SEQUENCE public category_category_id_seq postgres
+209; 1259 26061 TABLE public category postgres
+210; 1259 26066 SEQUENCE public film_film_id_seq postgres
+211; 1259 26068 TABLE public film postgres
+212; 1259 26080 TABLE public film_actor postgres
+213; 1259 26084 TABLE public film_category postgres
+214; 1259 26088 VIEW public actor_info postgres
+215; 1259 26093 SEQUENCE public address_address_id_seq postgres
+216; 1259 26095 TABLE public address postgres
+217; 1259 26100 SEQUENCE public city_city_id_seq postgres
+218; 1259 26102 TABLE public city postgres
+219; 1259 26107 SEQUENCE public country_country_id_seq postgres
+220; 1259 26109 TABLE public country postgres
+221; 1259 26114 VIEW public customer_list postgres
+222; 1259 26119 VIEW public film_list postgres
+223; 1259 26124 SEQUENCE public inventory_inventory_id_seq postgres
+224; 1259 26126 TABLE public inventory postgres
+225; 1259 26131 SEQUENCE public language_language_id_seq postgres
+226; 1259 26133 TABLE public language postgres
+227; 1259 26138 VIEW public nicer_but_slower_film_list postgres
+228; 1259 26143 SEQUENCE public payment_payment_id_seq postgres
+229; 1259 26145 TABLE public payment postgres
+230; 1259 26149 SEQUENCE public rental_rental_id_seq postgres
+231; 1259 26151 TABLE public rental postgres
+232; 1259 26156 VIEW public sales_by_film_category postgres
+233; 1259 26161 SEQUENCE public staff_staff_id_seq postgres
+234; 1259 26163 TABLE public staff postgres
+235; 1259 26172 SEQUENCE public store_store_id_seq postgres
+236; 1259 26174 TABLE public store postgres
+237; 1259 26179 VIEW public sales_by_store postgres
+238; 1259 26184 VIEW public staff_list postgres
+2993; 2604 26189 DEFAULT info users id postgres
+3250; 0 26041 TABLE DATA info film_users postgres
+3251; 0 26044 TABLE DATA info users postgres
+3254; 0 26054 TABLE DATA public actor postgres
+3262; 0 26095 TABLE DATA public address postgres
+3256; 0 26061 TABLE DATA public category postgres
+3264; 0 26102 TABLE DATA public city postgres
+3266; 0 26109 TABLE DATA public country postgres
+3249; 0 26032 TABLE DATA public customer postgres
+3258; 0 26068 TABLE DATA public film postgres
+3259; 0 26080 TABLE DATA public film_actor postgres
+3260; 0 26084 TABLE DATA public film_category postgres
+3268; 0 26126 TABLE DATA public inventory postgres
+3270; 0 26133 TABLE DATA public language postgres
+3272; 0 26145 TABLE DATA public payment postgres
+3274; 0 26151 TABLE DATA public rental postgres
+3276; 0 26163 TABLE DATA public staff postgres
+3278; 0 26174 TABLE DATA public store postgres
+3293; 0 0 SEQUENCE SET info users_id_seq postgres
+3294; 0 0 SEQUENCE SET public actor_actor_id_seq postgres
+3295; 0 0 SEQUENCE SET public address_address_id_seq postgres
+3296; 0 0 SEQUENCE SET public category_category_id_seq postgres
+3297; 0 0 SEQUENCE SET public city_city_id_seq postgres
+3298; 0 0 SEQUENCE SET public country_country_id_seq postgres
+3299; 0 0 SEQUENCE SET public customer_customer_id_seq postgres
+3300; 0 0 SEQUENCE SET public film_film_id_seq postgres
+3301; 0 0 SEQUENCE SET public inventory_inventory_id_seq postgres
+3302; 0 0 SEQUENCE SET public language_language_id_seq postgres
+3303; 0 0 SEQUENCE SET public payment_payment_id_seq postgres
+3304; 0 0 SEQUENCE SET public rental_rental_id_seq postgres
+3305; 0 0 SEQUENCE SET public staff_staff_id_seq postgres
+3306; 0 0 SEQUENCE SET public store_store_id_seq postgres
+3030; 2606 26191 CONSTRAINT info film_users film_users_pkey postgres
+3033; 2606 26193 CONSTRAINT info users users_pkey postgres
+3035; 2606 26195 CONSTRAINT public actor actor_pkey postgres
+3050; 2606 26197 CONSTRAINT public address address_pkey postgres
+3038; 2606 26199 CONSTRAINT public category category_pkey postgres
+3053; 2606 26201 CONSTRAINT public city city_pkey postgres
+3056; 2606 26203 CONSTRAINT public country country_pkey postgres
+3025; 2606 26205 CONSTRAINT public customer customer_pkey postgres
+3045; 2606 26207 CONSTRAINT public film_actor film_actor_pkey postgres
+3048; 2606 26209 CONSTRAINT public film_category film_category_pkey postgres
+3041; 2606 26211 CONSTRAINT public film film_pkey postgres
+3059; 2606 26213 CONSTRAINT public inventory inventory_pkey postgres
+3061; 2606 26215 CONSTRAINT public language language_pkey postgres
+3066; 2606 26217 CONSTRAINT public payment payment_pkey postgres
+3070; 2606 26219 CONSTRAINT public rental rental_pkey postgres
+3072; 2606 26221 CONSTRAINT public staff staff_pkey postgres
+3075; 2606 26223 CONSTRAINT public store store_pkey postgres
+3031; 1259 26224 INDEX info login_idx postgres
+3039; 1259 26225 INDEX public film_fulltext_idx postgres
+3036; 1259 26226 INDEX public idx_actor_last_name postgres
+3026; 1259 26227 INDEX public idx_fk_address_id postgres
+3051; 1259 26228 INDEX public idx_fk_city_id postgres
+3054; 1259 26229 INDEX public idx_fk_country_id postgres
+3062; 1259 26230 INDEX public idx_fk_customer_id postgres
+3046; 1259 26231 INDEX public idx_fk_film_id postgres
+3067; 1259 26232 INDEX public idx_fk_inventory_id postgres
+3042; 1259 26233 INDEX public idx_fk_language_id postgres
+3063; 1259 26234 INDEX public idx_fk_rental_id postgres
+3064; 1259 26235 INDEX public idx_fk_staff_id postgres
+3027; 1259 26236 INDEX public idx_fk_store_id postgres
+3028; 1259 26237 INDEX public idx_last_name postgres
+3057; 1259 26238 INDEX public idx_store_id_film_id postgres
+3043; 1259 26239 INDEX public idx_title postgres
+3073; 1259 26240 INDEX public idx_unq_manager_staff_id postgres
+3068; 1259 26241 INDEX public idx_unq_rental_rental_date_inventory_id_customer_id postgres
+3099; 2620 26242 TRIGGER public film film_fulltext_trigger postgres
+3097; 2620 26243 TRIGGER public actor last_updated postgres
+3103; 2620 26244 TRIGGER public address last_updated postgres
+3098; 2620 26245 TRIGGER public category last_updated postgres
+3104; 2620 26246 TRIGGER public city last_updated postgres
+3105; 2620 26247 TRIGGER public country last_updated postgres
+3096; 2620 26248 TRIGGER public customer last_updated postgres
+3100; 2620 26249 TRIGGER public film last_updated postgres
+3101; 2620 26250 TRIGGER public film_actor last_updated postgres
+3102; 2620 26251 TRIGGER public film_category last_updated postgres
+3106; 2620 26252 TRIGGER public inventory last_updated postgres
+3107; 2620 26253 TRIGGER public language last_updated postgres
+3108; 2620 26254 TRIGGER public rental last_updated postgres
+3109; 2620 26255 TRIGGER public staff last_updated postgres
+3110; 2620 26256 TRIGGER public store last_updated postgres
+3077; 2606 26257 FK CONSTRAINT info film_users film_users_film_id_fkey postgres
+3078; 2606 26262 FK CONSTRAINT info film_users film_users_user_id_fkey postgres
+3076; 2606 26267 FK CONSTRAINT public customer customer_address_id_fkey postgres
+3080; 2606 26272 FK CONSTRAINT public film_actor film_actor_actor_id_fkey postgres
+3081; 2606 26277 FK CONSTRAINT public film_actor film_actor_film_id_fkey postgres
+3082; 2606 26282 FK CONSTRAINT public film_category film_category_category_id_fkey postgres
+3083; 2606 26287 FK CONSTRAINT public film_category film_category_film_id_fkey postgres
+3079; 2606 26292 FK CONSTRAINT public film film_language_id_fkey postgres
+3084; 2606 26297 FK CONSTRAINT public address fk_address_city postgres
+3085; 2606 26302 FK CONSTRAINT public city fk_city postgres
+3086; 2606 26307 FK CONSTRAINT public inventory inventory_film_id_fkey postgres
+3087; 2606 26312 FK CONSTRAINT public payment payment_customer_id_fkey postgres
+3088; 2606 26317 FK CONSTRAINT public payment payment_rental_id_fkey postgres
+3089; 2606 26322 FK CONSTRAINT public payment payment_staff_id_fkey postgres
+3090; 2606 26327 FK CONSTRAINT public rental rental_customer_id_fkey postgres
+3091; 2606 26332 FK CONSTRAINT public rental rental_inventory_id_fkey postgres
+3092; 2606 26337 FK CONSTRAINT public rental rental_staff_id_key postgres
+3093; 2606 26342 FK CONSTRAINT public staff staff_address_id_fkey postgres
+3094; 2606 26347 FK CONSTRAINT public store store_address_id_fkey postgres
+3095; 2606 26352 FK CONSTRAINT public store store_manager_staff_id_fkey postgres

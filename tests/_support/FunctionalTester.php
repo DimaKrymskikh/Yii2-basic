@@ -19,5 +19,33 @@
 class FunctionalTester extends \Codeception\Actor
 {
     use _generated\FunctionalTesterActions;
-
+    
+    /**
+     * Отправка данных формы при регистрации
+     * @param string $login
+     * @param string $password
+     * @param string $verification
+     * @return void
+     */
+    public function registration(string $login = '', string $password = '', string $verification = ''): void
+    {
+        $this->submitForm('#registration-form', [
+            'RegistrationForm[login]' => $login,
+            'RegistrationForm[password]' => $password,
+            'RegistrationForm[verification]' => $verification,
+        ]);
+    }
+    
+    /**
+     * Отправка данных формы при аутентификации
+     * @param string|null $login
+     * @param string|null $password
+     */
+    public function login(string $login = '', string $password = '')
+    {
+        $this->submitForm('#login-form', [
+            'LoginForm[login]' => $login,
+            'LoginForm[password]' => $password,
+        ]);
+    }
 }

@@ -18,7 +18,7 @@ if (!Yii::$app->user->isGuest) {
         'label' => '',
         'format' => 'raw',
         'value' => function ($data) {
-            return $data->infoUser ? '<img src="/svg/check-circle.svg" alt="Наличие фильма">'
+            return $data->infoUser ? '<img class="film-availability" src="/svg/check-circle.svg" alt="Наличие фильма" data-film_id="' . $data->film_id . '">'
                     : '<img class="adding-film" src="/svg/plus-circle.svg" alt="Добавление фильма" data-film_id="' . $data->film_id . '">';
         }
     ];

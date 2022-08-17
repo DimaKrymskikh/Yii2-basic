@@ -3,6 +3,7 @@
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 $router = require __DIR__ . '/router.php';
+$modules = require __DIR__ . '/modules.php';
 
 $config = [
     'id' => 'basic',
@@ -13,11 +14,7 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
         '@dvdrental' => '@app/modules/dvdrental'
     ],
-    'modules' => [
-        'dvdrental' => [
-            'class' => 'app\modules\dvdrental\DvdrentalModule',
-        ],
-    ],
+    'modules' => $modules,
     // Маршрут, который используется, когда url = '/'
     'defaultRoute' => 'default',
     'components' => [
