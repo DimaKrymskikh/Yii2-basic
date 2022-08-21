@@ -1,7 +1,13 @@
 <?php
 
-$params = require __DIR__ . '/params.php';
+if (is_file($fileName = __DIR__ . '/secret.php')) {
+    $params = require $fileName;
+} else {
+    $params = [];
+}
+
 $db = require __DIR__ . '/db.php';
+$mailer = require __DIR__ . '/mailer.php';
 
 $config = [
     'id' => 'basic-console',
@@ -26,6 +32,7 @@ $config = [
             ],
         ],
         'db' => $db,
+        'mailer' => $mailer,
     ],
     'params' => $params,
     /*
