@@ -1,10 +1,10 @@
 <?php
 
-if (is_file($fileName = __DIR__ . '/secret.php')) {
-    $params = require $fileName;
-} else {
-    $params = [];
-}
+/**
+ * Загружаем из файла .env переменные среды, хранящие секретные параметры конфигурации
+ */
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(dirname(__DIR__));
+$dotenv->load();
 
 $db = require __DIR__ . '/db.php';
 $mailer = require __DIR__ . '/mailer.php';
@@ -34,7 +34,10 @@ $config = [
         'db' => $db,
         'mailer' => $mailer,
     ],
-    'params' => $params,
+    'params' => [
+        'emailFrom' => getenv('MAIL_EMAILFROM'),
+        'emailTo' => getenv('MAIL_EMAILTO'),
+    ],
     /*
     'controllerMap' => [
         'fixture' => [ // Fixture generation command line.

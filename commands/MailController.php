@@ -13,8 +13,8 @@ class MailController extends Controller
     public function actionIndex()
     {
         Yii::$app->mailer->compose('trial')
-            ->setFrom(isset(Yii::$app->params['emailFrom']) ? Yii::$app->params['emailFrom'] : 'a@b.com')
-            ->setTo(isset(Yii::$app->params['emailTo']) ? Yii::$app->params['emailTo'] : 'c@d.com')
+            ->setFrom(Yii::$app->params['emailFrom'])
+            ->setTo(Yii::$app->params['emailTo'])
             ->setSubject('Проверка связи')
             ->send();
     }

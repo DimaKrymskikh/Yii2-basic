@@ -5,8 +5,8 @@
  */
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'pgsql:host=localhost;port=5433;dbname=dvdrental',
-    'username' => 'postgres',
-    'password' => '1234',
+    'dsn' => getenv('DB_DSN'),
+    'username' => getenv('DB_USERNAME'),
+    'password' => getenv('DB_PASSWORD'),
     'charset' => 'utf8',
 ];

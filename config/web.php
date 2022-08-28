@@ -1,6 +1,11 @@
 <?php
 
-$params = require __DIR__ . '/params.php';
+/**
+ * Загружаем из файла .env переменные среды, хранящие секретные параметры конфигурации
+ */
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(dirname(__DIR__));
+$dotenv->load();
+
 $db = require __DIR__ . '/db.php';
 $router = require __DIR__ . '/router.php';
 $modules = require __DIR__ . '/modules.php';
@@ -20,7 +25,7 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'zxPLUexWTi6UaF6-aD3jKb31PNDi8iq_',
+            'cookieValidationKey' => getenv('APP_COOKIE_VALIDATION_KEY'),
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -63,7 +68,7 @@ $config = [
             'linkAssets' => true,
         ]
     ],
-    'params' => $params,
+    'params' => [],
 ];
 
 if (YII_ENV_DEV) {

@@ -11,10 +11,10 @@ return [
     'useFileTransport' => true,
     'transport' => [
         'class' => 'Swift_SmtpTransport',
-        'encryption' => isset($params['encryption']) ? $params['encryption'] : '',
-        'host' => isset($params['host']) ? $params['host'] : '',
-        'port' => isset($params['port']) ? $params['port'] : '',
-        'username' => isset($params['username']) ? $params['username'] : '',
-        'password' => isset($params['password']) ? $params['password'] : '',
+        'encryption' => getenv('MAIL_ENCRYPTION'),
+        'host' => getenv('MAIL_HOST'),
+        'port' => getenv('MAIL_PORT'),
+        'username' => getenv('MAIL_USERNAME'),
+        'password' => getenv('MAIL_PASSWORD'),
     ],
 ];

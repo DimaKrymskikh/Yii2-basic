@@ -1,5 +1,11 @@
 <?php
-$params = require __DIR__ . '/params.php';
+
+/**
+ * Загружаем из файла .env переменные среды, хранящие секретные параметры конфигурации
+ */
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(dirname(__DIR__));
+$dotenv->load();
+
 $db = require __DIR__ . '/test_db.php';
 $modules = require __DIR__ . '/modules.php';
 
@@ -46,5 +52,5 @@ return [
             */
         ],
     ],
-    'params' => $params,
+    'params' => [],
 ];
