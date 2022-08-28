@@ -24,7 +24,7 @@
 
     composer test
 
-Источник от авторов [selenium-standalone]https://github.com/webdriverio/selenium-standalone для установки
+Источник от авторов [selenium-standalone](https://github.com/webdriverio/selenium-standalone) для установки
 
 (У меня selenium-standalone установлен глобально)
 
@@ -38,5 +38,5 @@
 Отправка почты опробована в команде MailController
 
 Секретная информация храниться в переменных окружения в файле .env.
-Используется PHP-библиотека [PHP dotenv]https://github.com/vlucas/phpdotenv
+Используется PHP-библиотека [PHP dotenv](https://github.com/vlucas/phpdotenv)
 В файле .env.example перечислены используемые переменные окружения.
